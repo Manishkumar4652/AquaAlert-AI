@@ -19,6 +19,19 @@ Developed as part of the **AICTE Internship**, **1M1B (1 Million 1 Billion) Yout
 
 ---
 
+## 🖥️ Application Interface (Showcase)
+
+### 1. Home Page - Predictive Early Warning Hero
+![AquaAlert AI Hero Section](assets/screenshot_hero.png)
+
+### 2. Live Hydro-Analytics Operations Center
+![Live Telemetry and AI Logs Console](assets/screenshot_dashboard.png)
+
+### 3. Interactive Hydro-Model & Vector Map
+![District Risk Analyzer & SVG Map](assets/screenshot_check_district.png)
+
+---
+
 ## 📖 The Problem
 
 Rajasthan is India's largest state by land area, yet it is one of the most water-stressed regions in the country:

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How It Works - AquaAlert AI</title>
+  <meta name="description" content="Inside AquaAlert AI's predictive model: discover our data-ingest pipeline, deep learning analysis, and ethical, transparent frameworks.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-fade-in">
+
+  <!-- Shared Animated Background Layers -->
+  <div class="bg-wrapper">
+    <canvas id="particles-canvas"></canvas>
+    <div class="bg-grid"></div>
+    <div class="glow-blob blob-1"></div>
+    <div class="glow-blob blob-2"></div>
+    <div class="glow-blob blob-3"></div>
+  </div>
+
+  <!-- Main Content Layer -->
+  <div class="content-wrapper">
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar" id="navbar">
+      <a href="index.html" class="nav-logo">
+        💧 AquaAlert AI
+      </a>
+      <ul class="nav-links">
+        <li class="nav-item"><a href="index.html">Home</a></li>
+        <li class="nav-item"><a href="problem.html">Problem</a></li>
+        <li class="nav-item"><a href="how-it-works.html">How It Works</a></li>
+        <li class="nav-item"><a href="check-district.html">Check District</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Nav Drawer -->
+    <ul class="mobile-nav" id="mobile-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="problem.html">Problem</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="check-district.html">Check District</a></li>
+    </ul>
+
+    <!-- Hero Title -->
+    <section class="reveal" style="padding-top: calc(var(--nav-height) + 4rem); text-align: center;">
+      <div class="section-title-wrap">
+        <h1 class="section-title" style="font-size: clamp(2.5rem, 5vw, 3.5rem);">How AquaAlert AI Works</h1>
+        <p class="section-subtitle">A multi-staged intelligent prediction engine designed to translate environmental telemetry into early warnings.</p>
+        <div class="animated-underline"></div>
+      </div>
+    </section>
+
+    <!-- 4-Step Flow Section -->
+    <section style="padding-top: 0; padding-bottom: 2rem;">
+      <div class="reveal timeline-container">
+        <!-- Connecting Line Background -->
+        <div class="timeline-line">
+          <div class="timeline-line-fill"></div>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="timeline-step">
+          <div class="step-number-circle">1</div>
+          <div class="glass-card step-card">
+            <h3 class="card-title" style="color: var(--primary);">Data Input</h3>
+            <p class="card-desc">Ingests ground-truth parameters including historical monsoonal cycles, regional climate records, vegetation moisture indices (NDVI), and localized tubewell telemetry.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="timeline-step">
+          <div class="step-number-circle">2</div>
+          <div class="glass-card step-card">
+            <h3 class="card-title" style="color: var(--secondary);">AI Processing</h3>
+            <p class="card-desc">Evaluates data through recurrent network structures (LSTM) and gradient boosting matrices optimized for predicting dry-spell trajectories and water-table drops.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="timeline-step">
+          <div class="step-number-circle">3</div>
+          <div class="glass-card step-card">
+            <h3 class="card-title" style="color: var(--warning);">Risk Assessment</h3>
+            <p class="card-desc">Generates risk probability profiles (Low, Moderate, High) by correlating water demands against predicted replenishment patterns across Rajasthan districts.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="timeline-step">
+          <div class="step-number-circle">4</div>
+          <div class="glass-card step-card">
+            <h3 class="card-title" style="color: var(--success);">Alert & Advisory</h3>
+            <p class="card-desc">Distributes early alerts and seasonal guidelines (micro-irrigation, storage management) to local farm portals, cooperatives, and district boards.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Role Banner -->
+    <section class="reveal" style="padding-top: 0; padding-bottom: 2rem;">
+      <div class="ai-role-banner">
+        <div class="ai-role-content">
+          <div class="ai-role-title">AI Core Scope</div>
+          <div class="ai-role-text">
+            AI Role: Prediction + Pattern Detection + Decision-Making Support
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Responsible AI Section -->
+    <section class="reveal">
+      <div class="section-title-wrap">
+        <h2 class="section-title">Responsible AI Considerations</h2>
+        <p class="section-subtitle">We design our machine learning systems with strict ethical guardrails to support sustainable development.</p>
+        <div class="animated-underline"></div>
+      </div>
+
+      <div class="grid-2x2">
+        <!-- Card 1: Fairness -->
+        <div class="glass-card ethics-card fairness-glow">
+          <span class="card-icon" style="color: var(--primary);">⚖️</span>
+          <h3 class="card-title" style="color: var(--primary);">Fairness</h3>
+          <p class="card-desc">We ensure predictions represent all community segments equally. Training data is balanced across different geological basins to prevent geographical bias or resource misallocations.</p>
+        </div>
+
+        <!-- Card 2: Transparency -->
+        <div class="glass-card ethics-card transparency-glow">
+          <span class="card-icon" style="color: var(--secondary);">🔍</span>
+          <h3 class="card-title" style="color: var(--secondary);">Transparency</h3>
+          <p class="card-desc">Explainable AI (XAI) models show the key factors—like rain deficits or extraction rates—driving each risk level, giving administrators clear, understandable evidence.</p>
+        </div>
+
+        <!-- Card 3: Privacy -->
+        <div class="glass-card ethics-card privacy-glow">
+          <span class="card-icon" style="color: var(--warning);">🔒</span>
+          <h3 class="card-title" style="color: var(--warning);">Privacy</h3>
+          <p class="card-desc">Telemetry focuses on macro-aquifer indices. We strip all identifiable private details, keeping household wells and farm coordinates anonymous.</p>
+        </div>
+
+        <!-- Card 4: Ethics -->
+        <div class="glass-card ethics-card ethics-glow">
+          <span class="card-icon" style="color: var(--success);">✅</span>
+          <h3 class="card-title" style="color: var(--success);">Ethics</h3>
+          <p class="card-desc">Our recommendations respect local farming knowledge. We design our technology to support human decision-making, not replace traditional sustainable water practices.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shared Footer -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">💧 AquaAlert AI</a>
+          <p class="footer-tagline">Predicting Water Scarcity Before It Happens. A hydro-geological early-warning prediction system designed for Rajasthan, India.</p>
+        </div>
+        <div class="footer-links-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="problem.html">Problem</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="check-district.html">Check District</a></li>
+          </ul>
+        </div>
+        <div class="footer-badge-col">
+          <h4>Internship Partners</h4>
+          <div class="badge-row">
+            <div class="partner-badge">1M1B Youth For SDG</div>
+            <div class="partner-badge">IBM SkillsBuild</div>
+            <div class="partner-badge">AICTE Internship</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Manish Kumar Prajapat & Abhay Singh Sankhla | ICFAI University Jaipur</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

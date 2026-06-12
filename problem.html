@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Problem - AquaAlert AI</title>
+  <meta name="description" content="Understanding Rajasthan's geographical and hydrological challenges: groundwater extraction rates, climate volatility, and the critical need for early warning solutions.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-fade-in">
+
+  <!-- Shared Animated Background Layers -->
+  <div class="bg-wrapper">
+    <canvas id="particles-canvas"></canvas>
+    <div class="bg-grid"></div>
+    <div class="glow-blob blob-1"></div>
+    <div class="glow-blob blob-2"></div>
+    <div class="glow-blob blob-3"></div>
+  </div>
+
+  <!-- Main Content Layer -->
+  <div class="content-wrapper">
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar" id="navbar">
+      <a href="index.html" class="nav-logo">
+        💧 AquaAlert AI
+      </a>
+      <ul class="nav-links">
+        <li class="nav-item"><a href="index.html">Home</a></li>
+        <li class="nav-item"><a href="problem.html">Problem</a></li>
+        <li class="nav-item"><a href="how-it-works.html">How It Works</a></li>
+        <li class="nav-item"><a href="check-district.html">Check District</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Nav Drawer -->
+    <ul class="mobile-nav" id="mobile-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="problem.html">Problem</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="check-district.html">Check District</a></li>
+    </ul>
+
+    <!-- Hero Banner for Problem Page -->
+    <section class="reveal" style="padding-top: calc(var(--nav-height) + 4rem); text-align: center;">
+      <div class="section-title-wrap">
+        <h1 class="section-title" style="font-size: clamp(2.5rem, 5vw, 3.5rem);">The Problem</h1>
+        <p class="section-subtitle">Why water scarcity in Rajasthan is a looming humanitarian and economic crisis.</p>
+        <div class="animated-underline"></div>
+      </div>
+    </section>
+
+    <!-- Problem Cards Grid -->
+    <section class="reveal" style="padding-top: 0;">
+      <div class="glass-grid">
+        <!-- Problem Card 1 -->
+        <div class="glass-card border-cyan">
+          <span class="card-icon" style="font-size: 48px;">📍</span>
+          <h3 class="card-title">Critical Geography</h3>
+          <p class="card-desc">Rajasthan is India's largest state by area but holds only 1.2% of its surface water resources. Over 60% of the state is covered by the Thar Desert, making rainfall patterns naturally sparse and highly volatile.</p>
+        </div>
+
+        <!-- Problem Card 2 -->
+        <div class="glass-card border-orange">
+          <span class="card-icon" style="font-size: 48px;">⚠️</span>
+          <h3 class="card-title">No Early Warning</h3>
+          <p class="card-desc">Rural communities and administrative blocks currently rely on reactive solutions rather than proactive planning. Without forecast parameters, water tables deplete completely before corrective programs can be initiated.</p>
+        </div>
+
+        <!-- Problem Card 3 -->
+        <div class="glass-card border-purple">
+          <span class="card-icon" style="font-size: 48px;">📈</span>
+          <h3 class="card-title">Rising Impact</h3>
+          <p class="card-desc">Agricultural failure, cattle migrations, urban utility deficits, and local disputes over shared wells are rising annually. Climate change has compressed monsoon spans, worsening aquifer dry-out rates.</p>
+        </div>
+      </div>
+
+      <!-- Problem Statement Quote Box -->
+      <div class="reveal problem-statement-box">
+        <span class="quote-icon">“</span>
+        <p class="problem-statement-text">
+          How might we use AI to predict water scarcity so that communities in Rajasthan can prepare in advance?
+        </p>
+      </div>
+    </section>
+
+    <!-- SDG Alignment Section -->
+    <section class="reveal" id="sdg-alignment">
+      <div class="section-title-wrap">
+        <h2 class="section-title">SDG Alignment</h2>
+        <p class="section-subtitle">Our early warning architecture directly targets three critical UN Sustainable Development Goals.</p>
+        <div class="animated-underline"></div>
+      </div>
+
+      <div class="sdg-grid">
+        <!-- SDG 6 Card -->
+        <div class="sdg-card sdg-card-blue">
+          <div class="sdg-num">06</div>
+          <span class="sdg-badge-label">Primary Target</span>
+          <span class="card-icon">🚰</span>
+          <h3 class="card-title">SDG 6: Clean Water & Sanitation</h3>
+          <p class="card-desc">Ensuring availability and sustainable management of water. By predicting aquifer depletion, AquaAlert AI helps preserve vital drinking resources and avoids total water table collapse.</p>
+        </div>
+
+        <!-- SDG 11 Card -->
+        <div class="sdg-card sdg-card-orange">
+          <div class="sdg-num">11</div>
+          <span class="sdg-badge-label">Community Resilience</span>
+          <span class="card-icon">🏙️</span>
+          <h3 class="card-title">SDG 11: Sustainable Cities</h3>
+          <p class="card-desc">Making settlements inclusive, safe, and resilient. Our risk alerts enable district boards to design smart urban allocations and mitigate stress in vulnerable dryland municipalities.</p>
+        </div>
+
+        <!-- SDG 13 Card -->
+        <div class="sdg-card sdg-card-green">
+          <div class="sdg-num">13</div>
+          <span class="sdg-badge-label">Climate Action</span>
+          <span class="card-icon">🌱</span>
+          <h3 class="card-title">SDG 13: Climate Action</h3>
+          <p class="card-desc">Taking urgent action to combat climate impact. Harnessing machine learning to model weather irregularities builds community adaptation infrastructure in arid zones.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shared Footer -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">💧 AquaAlert AI</a>
+          <p class="footer-tagline">Predicting Water Scarcity Before It Happens. A hydro-geological early-warning prediction system designed for Rajasthan, India.</p>
+        </div>
+        <div class="footer-links-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="problem.html">Problem</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="check-district.html">Check District</a></li>
+          </ul>
+        </div>
+        <div class="footer-badge-col">
+          <h4>Internship Partners</h4>
+          <div class="badge-row">
+            <div class="partner-badge">1M1B Youth For SDG</div>
+            <div class="partner-badge">IBM SkillsBuild</div>
+            <div class="partner-badge">AICTE Internship</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Manish Kumar Prajapat & Abhay Singh Sankhla | ICFAI University Jaipur</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

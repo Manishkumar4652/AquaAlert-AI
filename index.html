@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AquaAlert AI - AI-Powered Water Scarcity Early Warning System</title>
+  <meta name="description" content="Predicting water crisis in Rajasthan, India using machine learning models trained on decades of climate and groundwater datasets. Supporting SDG 6, 11, and 13.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-fade-in">
+
+  <!-- Shared Animated Background Layers -->
+  <div class="bg-wrapper">
+    <canvas id="particles-canvas"></canvas>
+    <div class="bg-grid"></div>
+    <div class="glow-blob blob-1"></div>
+    <div class="glow-blob blob-2"></div>
+    <div class="glow-blob blob-3"></div>
+  </div>
+
+  <!-- Main Content Layer -->
+  <div class="content-wrapper">
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar" id="navbar">
+      <a href="index.html" class="nav-logo">
+        💧 AquaAlert AI
+      </a>
+      <ul class="nav-links">
+        <li class="nav-item"><a href="index.html">Home</a></li>
+        <li class="nav-item"><a href="problem.html">Problem</a></li>
+        <li class="nav-item"><a href="how-it-works.html">How It Works</a></li>
+        <li class="nav-item"><a href="check-district.html">Check District</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Nav Drawer -->
+    <ul class="mobile-nav" id="mobile-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="problem.html">Problem</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="check-district.html">Check District</a></li>
+    </ul>
+
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="top-badge">
+        <span>🌊 AI for Sustainability | SDG 6</span>
+      </div>
+      
+      <h1>
+        Predict Water Crisis<br>
+        <span class="gradient-text">Before It Happens</span>
+      </h1>
+      
+      <p class="subheading">
+        AI-Powered Early Warning System for Rajasthan, India
+      </p>
+
+      <!-- Word Cycler -->
+      <div class="cycling-text-container">
+        Empowering <span class="cycling-word">Farmers.</span>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="cta-group">
+        <a href="check-district.html" class="btn btn-primary">Check Your District →</a>
+        <a href="how-it-works.html" class="btn btn-secondary">How It Works</a>
+      </div>
+
+      <!-- SDG badging row -->
+      <div class="sdg-pill-row">
+        <span class="sdg-pill">SDG 6 ✦ Clean Water</span>
+        <span class="sdg-pill">SDG 11 ✦ Sustainable Cities</span>
+        <span class="sdg-pill">SDG 13 ✦ Climate Action</span>
+      </div>
+
+      <!-- Scroll indicator -->
+      <a href="#features" class="scroll-indicator">
+        <span>Live Telemetry Center</span>
+        <span class="arrow">↓</span>
+      </a>
+
+      <!-- Animated SVG Waves at bottom of hero -->
+      <div class="hero-wave-container">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,60 C150,100 350,20 500,60 C650,100 850,20 1000,60 C1150,100 1300,20 1450,60 L1450,120 L0,120 Z" class="wave-layer1"></path>
+          <path d="M0,50 C180,90 300,10 480,50 C660,90 780,10 960,50 C1140,90 1260,10 1440,50 L1440,120 L0,120 Z" class="wave-layer2"></path>
+          <path d="M0,40 C200,80 320,0 520,40 C720,80 840,0 1040,40 C1240,80 1360,0 1560,40 L1560,120 L0,120 Z" class="wave-layer3"></path>
+        </svg>
+      </div>
+    </header>
+
+    <!-- Dashboard Preview Section -->
+    <section id="features" class="reveal">
+      <div class="section-title-wrap">
+        <h2 class="section-title">Live Hydro-Analytics Operations Center</h2>
+        <p class="section-subtitle">Trained on decades of atmospheric, vegetative, and groundwater records to predict regional water stress index.</p>
+        <div class="animated-underline"></div>
+      </div>
+
+      <div class="dashboard-grid">
+        <!-- Left: Telemetry panels -->
+        <div class="telemetry-board">
+          <!-- Panel 1: Soil Moisture -->
+          <div class="telemetry-card border-cyan">
+            <div class="telemetry-header">
+              <span class="telemetry-title">AVG Soil Moisture (Thar Fringe)</span>
+              <span class="pulse-dot pulse-dot-cyan"></span>
+            </div>
+            <div class="telemetry-value" id="telemetry-moisture-val">34.2%</div>
+            <p class="card-desc" style="font-size:0.85rem; color: var(--text-secondary);">Ingested from micro-humidity sensors. Below normal monsoonal threshold.</p>
+            <div class="sparkline-container"></div>
+          </div>
+
+          <!-- Panel 2: Rain Deficit -->
+          <div class="telemetry-card border-purple">
+            <div class="telemetry-header">
+              <span class="telemetry-title">Monsoonal Rain Deficit (Predicted)</span>
+              <span class="pulse-dot pulse-dot-purple"></span>
+            </div>
+            <div class="telemetry-value" id="telemetry-deficit-val">48.6%</div>
+            <p class="card-desc" style="font-size:0.85rem; color: var(--text-secondary);">Computed from global air pressure grids. Severe volatility observed.</p>
+            <div class="sparkline-container"></div>
+          </div>
+          
+          <!-- Panel 3: Feature Description 1 -->
+          <div class="glass-card border-cyan" style="grid-column: span 1; padding: 1.5rem;">
+            <span class="card-icon" style="margin-bottom:0.5rem; font-size:1.8rem;">🤖</span>
+            <h3 class="card-title" style="font-size:1.15rem; margin-bottom:0.5rem;">AI Modeling</h3>
+            <p class="card-desc" style="font-size:0.85rem;">Utilizes recurrent networks (LSTM) to forecast reservoir replenishment and dry-out thresholds 30 days in advance.</p>
+          </div>
+
+          <!-- Panel 4: Feature Description 2 -->
+          <div class="glass-card border-orange" style="grid-column: span 1; padding: 1.5rem;">
+            <span class="card-icon" style="margin-bottom:0.5rem; font-size:1.8rem;">⚡</span>
+            <h3 class="card-title" style="font-size:1.15rem; margin-bottom:0.5rem;">Real-Time Alerts</h3>
+            <p class="card-desc" style="font-size:0.85rem;">Instantly maps predictions to districts, sending action plans to agriculture boards before dry-spells set in.</p>
+          </div>
+        </div>
+
+        <!-- Right: AI Console Logs -->
+        <div class="logger-card">
+          <div class="logger-header">
+            <span>AI PREDICTIVE COMPUTATION LOGS</span>
+            <span style="color: var(--secondary);">ACTIVE MODEL V4.2</span>
+          </div>
+          <div class="logger-box" id="logger-box">
+            <div class="logger-line"><span class="log-sys">[23:05:01]</span> <span class="log-sys">[SYSTEM] Booting predictive hydro-analytics framework...</span></div>
+            <div class="logger-line"><span class="log-sys">[23:05:02]</span> <span class="log-sys">[Ingest] Meteorological data synced from ISRO and IMD databases.</span></div>
+            <div class="logger-line"><span class="log-sys">[23:05:04]</span> <span class="log-model">[Compute] Compiling groundwater registers for Pali, Ajmer, and Nagaur.</span></div>
+            <div class="logger-line"><span class="log-sys">[23:05:08]</span> <span class="log-sys">[Ingest] Soil moisture satellite grids updated.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shared Footer -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">💧 AquaAlert AI</a>
+          <p class="footer-tagline">Predicting Water Scarcity Before It Happens. A hydro-geological early-warning prediction system designed for Rajasthan, India.</p>
+        </div>
+        <div class="footer-links-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="problem.html">Problem</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="check-district.html">Check District</a></li>
+          </ul>
+        </div>
+        <div class="footer-badge-col">
+          <h4>Internship Partners</h4>
+          <div class="badge-row">
+            <div class="partner-badge">1M1B Youth For SDG</div>
+            <div class="partner-badge">IBM SkillsBuild</div>
+            <div class="partner-badge">AICTE Internship</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Manish Kumar Prajapat & Abhay Singh Sankhla | ICFAI University Jaipur</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check Water Risk - AquaAlert AI</title>
+  <meta name="description" content="Use our AI tool to check localized water crisis probability maps and guidelines for Rajasthan's 33 districts.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    svg.rajasthan-vector-map text {
+      font-family: var(--font-family);
+      font-size: 11px;
+      font-weight: 700;
+      fill: #FFFFFF;
+      text-shadow: 0 0 4px rgba(0,0,0,0.8);
+      text-anchor: middle;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="page-fade-in">
+
+  <!-- Shared Animated Background Layers -->
+  <div class="bg-wrapper">
+    <canvas id="particles-canvas"></canvas>
+    <div class="bg-grid"></div>
+    <div class="glow-blob blob-1"></div>
+    <div class="glow-blob blob-2"></div>
+    <div class="glow-blob blob-3"></div>
+  </div>
+
+  <!-- Main Content Layer -->
+  <div class="content-wrapper">
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar" id="navbar">
+      <a href="index.html" class="nav-logo">
+        💧 AquaAlert AI
+      </a>
+      <ul class="nav-links">
+        <li class="nav-item"><a href="index.html">Home</a></li>
+        <li class="nav-item"><a href="problem.html">Problem</a></li>
+        <li class="nav-item"><a href="how-it-works.html">How It Works</a></li>
+        <li class="nav-item"><a href="check-district.html">Check District</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Nav Drawer -->
+    <ul class="mobile-nav" id="mobile-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="problem.html">Problem</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="check-district.html">Check District</a></li>
+    </ul>
+
+    <!-- Hero Title -->
+    <section class="reveal" style="padding-top: calc(var(--nav-height) + 3rem); text-align: center; padding-bottom: 2rem;">
+      <div class="section-title-wrap">
+        <h1 class="section-title" style="font-size: clamp(2.5rem, 5vw, 3.5rem);">
+          Check Water Risk<span class="blinking-cursor">_</span>
+        </h1>
+        <p class="section-subtitle">AI-powered risk prediction and future-ready simulation for all 33 districts of Rajasthan</p>
+        <div class="animated-underline"></div>
+      </div>
+    </section>
+
+    <!-- Interactive Dashboard Grid -->
+    <section style="padding-top: 0;">
+      <div class="model-dashboard-wrap">
+        
+        <!-- Left Column: Inputs Form -->
+        <div class="reveal form-inputs-card">
+          <h3 class="card-title" style="border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem; margin-bottom: 1.5rem; color: var(--primary);">
+            ⚙️ Hydro-Model Diagnostics
+          </h3>
+          
+          <div class="tool-form-group">
+            <label for="district-select" class="tool-label">Select Target District</label>
+            <select id="district-select" class="tool-select">
+              <option value="" disabled selected>-- Choose a District --</option>
+              <option value="ajmer">Ajmer</option>
+              <option value="alwar">Alwar</option>
+              <option value="banswara">Banswara</option>
+              <option value="baran">Baran</option>
+              <option value="barmer">Barmer</option>
+              <option value="bharatpur">Bharatpur</option>
+              <option value="bhilwara">Bhilwara</option>
+              <option value="bikaner">Bikaner</option>
+              <option value="bundi">Bundi</option>
+              <option value="chittorgarh">Chittorgarh</option>
+              <option value="churu">Churu</option>
+              <option value="dausa">Dausa</option>
+              <option value="dholpur">Dholpur</option>
+              <option value="dungarpur">Dungarpur</option>
+              <option value="ganganagar">Ganganagar</option>
+              <option value="hanumangarh">Hanumangarh</option>
+              <option value="jaipur">Jaipur</option>
+              <option value="jaisalmer">Jaisalmer</option>
+              <option value="jalore">Jalore</option>
+              <option value="jhalawar">Jhalawar</option>
+              <option value="jhunjhunu">Jhunjhunu</option>
+              <option value="jodhpur">Jodhpur</option>
+              <option value="karauli">Karauli</option>
+              <option value="kota">Kota</option>
+              <option value="nagaur">Nagaur</option>
+              <option value="pali">Pali</option>
+              <option value="pratapgarh">Pratapgarh</option>
+              <option value="rajsamand">Rajsamand</option>
+              <option value="sawai-madhopur">Sawai Madhopur</option>
+              <option value="sikar">Sikar</option>
+              <option value="sirohi">Sirohi</option>
+              <option value="tonk">Tonk</option>
+              <option value="udaipur">Udaipur</option>
+            </select>
+          </div>
+
+          <div class="tool-form-group">
+            <label for="season-select" class="tool-label">Select Season Segment</label>
+            <select id="season-select" class="tool-select">
+              <option value="" disabled selected>-- Choose a Season --</option>
+              <option value="summer">Summer (Apr–Jun)</option>
+              <option value="monsoon">Monsoon (Jul–Sep)</option>
+              <option value="post-monsoon">Post-Monsoon (Oct–Nov)</option>
+              <option value="winter">Winter (Dec–Mar)</option>
+            </select>
+          </div>
+
+          <!-- Sliders for interactive variables simulation -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <span class="slider-label">Simulate Rainfall Deficit</span>
+              <span class="slider-val" id="slider-rain-val">10%</span>
+            </div>
+            <input type="range" id="slider-rain" class="slider-input" min="0" max="100" value="10">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <span class="slider-label">Simulate Soil Moisture Deficit</span>
+              <span class="slider-val" id="slider-moisture-val">15%</span>
+            </div>
+            <input type="range" id="slider-moisture" class="slider-input" min="0" max="100" value="15">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <span class="slider-label">Simulate Aquifer Water Depth</span>
+              <span class="slider-val" id="slider-depth-val">30m</span>
+            </div>
+            <input type="range" id="slider-depth" class="slider-input" min="10" max="150" value="30">
+          </div>
+
+          <button id="analyze-btn" class="btn btn-primary btn-full" style="margin-top:2.5rem;">Analyze Aquifer Health →</button>
+        </div>
+
+        <!-- Right Column: Vector Map Visual -->
+        <div class="reveal map-visual-card">
+          <h3 class="card-title" style="margin-bottom: 0.5rem; text-align: center; color: var(--secondary);">🗺️ Geographic Analytics Map</h3>
+          <p class="card-desc" style="text-align: center; margin-bottom: 1.5rem; font-size:0.85rem;">
+            Click districts directly on the map to load their parameters, or select them from the inputs panel to check warnings.
+          </p>
+
+          <svg class="rajasthan-vector-map" viewBox="0 0 800 650" width="100%" height="auto">
+            <!-- Ganganagar -->
+            <polygon points="280,50 330,30 380,80 320,120 280,130" data-district="ganganagar" />
+            <text x="325" y="85">Ganganagar</text>
+            
+            <!-- Hanumangarh -->
+            <polygon points="330,30 430,40 430,100 380,80" data-district="hanumangarh" />
+            <text x="395" y="65">Hanumangarh</text>
+            
+            <!-- Bikaner -->
+            <polygon points="180,180 280,130 330,190 280,240 200,280" data-district="bikaner" />
+            <text x="255" y="200">Bikaner</text>
+            
+            <!-- Churu -->
+            <polygon points="330,190 320,120 430,100 480,140 430,190" data-district="churu" />
+            <text x="400" y="145">Churu</text>
+            
+            <!-- Jhunjhunu -->
+            <polygon points="480,140 540,120 530,170 470,180" data-district="jhunjhunu" />
+            <text x="505" y="145">Jhunjhunu</text>
+            
+            <!-- Sikar -->
+            <polygon points="430,190 470,180 500,220 440,240 400,220" data-district="sikar" />
+            <text x="450" y="215">Sikar</text>
+            
+            <!-- Nagaur -->
+            <polygon points="280,240 330,190 400,220 440,240 390,300 330,300" data-district="nagaur" />
+            <text x="360" y="255">Nagaur</text>
+            
+            <!-- Jaisalmer -->
+            <polygon points="50,230 180,180 200,280 150,340 50,300" data-district="jaisalmer" />
+            <text x="125" y="270">Jaisalmer</text>
+            
+            <!-- Jodhpur -->
+            <polygon points="200,280 280,240 330,300 280,360 170,410 150,340" data-district="jodhpur" />
+            <text x="245" y="325">Jodhpur</text>
+            
+            <!-- Barmer -->
+            <polygon points="50,300 150,340 170,410 80,440 60,380" data-district="barmer" />
+            <text x="105" y="365">Barmer</text>
+            
+            <!-- Jalore -->
+            <polygon points="80,440 170,410 180,460 130,490 80,470" data-district="jalore" />
+            <text x="130" y="445">Jalore</text>
+            
+            <!-- Sirohi -->
+            <polygon points="130,490 180,460 210,500 160,530" data-district="sirohi" />
+            <text x="170" y="500">Sirohi</text>
+            
+            <!-- Pali -->
+            <polygon points="170,410 280,360 310,410 250,450 180,460" data-district="pali" />
+            <text x="235" y="420">Pali</text>
+            
+            <!-- Ajmer -->
+            <polygon points="330,300 390,300 410,350 350,390 310,410 280,360" data-district="ajmer" />
+            <text x="345" y="350">Ajmer</text>
+            
+            <!-- Jaipur -->
+            <polygon points="440,240 520,220 540,290 480,310 440,290" data-district="jaipur" />
+            <text x="485" y="270">Jaipur</text>
+            
+            <!-- Alwar -->
+            <polygon points="520,220 620,200 630,260 550,260 540,290" data-district="alwar" />
+            <text x="570" y="240">Alwar</text>
+            
+            <!-- Dausa -->
+            <polygon points="540,290 550,260 610,270 600,310 540,310" data-district="dausa" />
+            <text x="575" y="285">Dausa</text>
+            
+            <!-- Bharatpur -->
+            <polygon points="630,260 690,250 710,300 640,310 610,270" data-district="bharatpur" />
+            <text x="655" y="280">Bharatpur</text>
+            
+            <!-- Dholpur -->
+            <polygon points="640,310 710,300 730,340 680,350" data-district="dholpur" />
+            <text x="685" y="325">Dholpur</text>
+            
+            <!-- Karauli -->
+            <polygon points="600,310 640,310 680,350 630,380 590,350" data-district="karauli" />
+            <text x="635" y="350">Karauli</text>
+            
+            <!-- Sawai Madhopur -->
+            <polygon points="480,310 540,310 590,350 630,380 570,410 500,380" data-district="sawai-madhopur" />
+            <text x="545" y="350">S. Madhopur</text>
+            
+            <!-- Tonk -->
+            <polygon points="410,350 480,310 500,380 440,400 390,380" data-district="tonk" />
+            <text x="445" y="360">Tonk</text>
+            
+            <!-- Bhilwara -->
+            <polygon points="310,410 350,390 390,380 440,400 420,450 340,470 290,460" data-district="bhilwara" />
+            <text x="365" y="430">Bhilwara</text>
+            
+            <!-- Rajsamand -->
+            <polygon points="250,450 310,410 290,460 300,500 240,510 220,490" data-district="rajsamand" />
+            <text x="260" y="475">Rajsamand</text>
+            
+            <!-- Udaipur -->
+            <polygon points="210,500 240,510 270,550 200,570 190,540" data-district="udaipur" />
+            <text x="225" y="540">Udaipur</text>
+            
+            <!-- Dungarpur -->
+            <polygon points="200,570 240,580 220,620 180,600" data-district="dungarpur" />
+            <text x="210" y="595">Dungarpur</text>
+            
+            <!-- Banswara -->
+            <polygon points="240,580 290,570 300,620 220,620" data-district="banswara" />
+            <text x="265" y="605">Banswara</text>
+            
+            <!-- Chittorgarh -->
+            <polygon points="290,460 340,470 350,520 270,550 300,500" data-district="chittorgarh" />
+            <text x="315" y="515">Chittorgarh</text>
+            
+            <!-- Pratapgarh -->
+            <polygon points="270,550 350,520 370,570 290,570" data-district="pratapgarh" />
+            <text x="315" y="555">Pratapgarh</text>
+            
+            <!-- Bundi -->
+            <polygon points="440,400 500,380 530,430 460,450 420,450" data-district="bundi" />
+            <text x="470" y="415">Bundi</text>
+            
+            <!-- Kota -->
+            <polygon points="460,450 530,430 560,480 500,500 460,480" data-district="kota" />
+            <text x="515" y="465">Kota</text>
+            
+            <!-- Baran -->
+            <polygon points="560,480 640,460 630,520 540,520 500,500" data-district="baran" />
+            <text x="585" y="495">Baran</text>
+            
+            <!-- Jhalawar -->
+            <polygon points="500,500 540,520 520,570 460,560 460,480" data-district="jhalawar" />
+            <text x="500" y="535">Jhalawar</text>
+          </svg>
+
+          <!-- Map Legend -->
+          <div class="map-legend" style="justify-content: center;">
+            <div class="legend-item">
+              <span class="legend-color legend-low"></span>
+              <span>Low Risk</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color legend-mod"></span>
+              <span>Moderate Risk</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color legend-high"></span>
+              <span>High Risk</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
+      <!-- Upgraded Tabbed Result Sheet Card (appears below map) -->
+      <div id="result-card" class="result-card" style="margin: 4rem auto 0 auto; max-width: 900px;">
+        <div class="result-header">
+          <div class="result-meta">
+            <h3 id="res-district">District Name</h3>
+            <p id="res-season">Season</p>
+          </div>
+          <span id="res-risk-badge" class="risk-badge">LOW RISK</span>
+          <div id="res-status-icon" class="result-status-icon">✅</div>
+        </div>
+
+        <!-- Diagnostic Tabs Control -->
+        <div class="results-tabs">
+          <button class="tab-btn active" data-tab="advisory">Immediate Risk & Advisory</button>
+          <button class="tab-btn" data-tab="future-plan">Future-Ready Adaptation Plan</button>
+        </div>
+
+        <!-- Tab Content 1: Immediate Alerts -->
+        <div id="advisory-tab" class="tab-content active">
+          <p id="res-advisory" class="result-advisory">
+            Loading analysis outputs...
+          </p>
+          <div class="result-actions">
+            <h4>Immediate Actions Required:</h4>
+            <ul id="res-actions-list">
+              <!-- Actions are loaded dynamically in main.js -->
+            </ul>
+          </div>
+        </div>
+
+        <!-- Tab Content 2: Future-Ready Zonal Plan -->
+        <div id="future-plan-tab" class="tab-content">
+          <div id="future-plan-content">
+            <!-- Future-Ready suggestions generated by main.js based on zone -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shared Footer -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">💧 AquaAlert AI</a>
+          <p class="footer-tagline">Predicting Water Scarcity Before It Happens. A hydro-geological early-warning prediction system designed for Rajasthan, India.</p>
+        </div>
+        <div class="footer-links-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="problem.html">Problem</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="check-district.html">Check District</a></li>
+          </ul>
+        </div>
+        <div class="footer-badge-col">
+          <h4>Internship Partners</h4>
+          <div class="badge-row">
+            <div class="partner-badge">1M1B Youth For SDG</div>
+            <div class="partner-badge">IBM SkillsBuild</div>
+            <div class="partner-badge">AICTE Internship</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Manish Kumar Prajapat & Abhay Singh Sankhla | ICFAI University Jaipur</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -2,7 +2,10 @@
 
 [![AI for Sustainability](https://img.shields.io/badge/AI%20for%20Sustainability-SDG%206-blue.svg)](https://sdgs.un.org/goals/goal6)
 [![Climate Action](https://img.shields.io/badge/Climate%20Action-SDG%2013-green.svg)](https://sdgs.un.org/goals/goal13)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen.svg)](https://manishkumar4652.github.io/AquaAlert-AI/)
 [![Project Status](https://img.shields.io/badge/Project-Active%20Prototype-orange.svg)](#)
+
+🔗 **Live URL:** [https://manishkumar4652.github.io/AquaAlert-AI/](https://manishkumar4652.github.io/AquaAlert-AI/)
 
 AquaAlert AI is an interactive, intelligent hydro-geological simulation and early-warning prediction tool designed specifically for the state of **Rajasthan, India**. This system is built to help rural communities, farmers, agricultural boards, and administrative blocks transition from a **reactive** response to a **proactive** stance against aquifer depletion and drought cycles.
 
